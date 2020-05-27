@@ -2,3 +2,5 @@
 packages
 StudentsService/bin
 StudentsService/obj
+StudentsClient/bin
+StudentsClient/obj

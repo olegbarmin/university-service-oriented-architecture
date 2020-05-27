@@ -4,10 +4,11 @@ using System.Web.Hosting;
 using System.Xml.Serialization;
 using System.IO;
 using Students.Models;
+using System.Web.Script.Services;
 
 namespace Students
 {
-
+    [ScriptService]
     [WebService(Name = "StudentsService", Namespace = "http://www.friends.com/")]
     public class StudentsService : WebService
     {

@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div>
+        <h3>Show all students</h3>
+        @using (Html.BeginForm("getAllStudents", "Home", FormMethod.Post))
+        {
+            <input type="submit" value="Show" class="btn btn-primary" />
+        }
+    </div>
+
+    <div>
+        <h1>Show students filtered by marks</h1>
+        @using (Html.BeginForm("GetStudentsFilteredByAverageMark", "Home", FormMethod.Post))
+        {
+            <p>Enter filter criteria</p>
+            <input type="number" step="1" name="lowerBound" placeholder="Lower mark bound" />
+            <br />
+            <input type="number" step="1" name="upperBound" placeholder="Upper mark bound" />
+            <br />
+            <input type="submit" value="Show" class="btn btn-primary" />
+        }
+    </div>

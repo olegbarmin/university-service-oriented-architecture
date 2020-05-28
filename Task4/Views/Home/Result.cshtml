@@ -1,0 +1,17 @@
+﻿@using GridMvc.Html
+@model IEnumerable<Task4.StudentsService.Student>
+
+@{
+    ViewBag.Title = "Result";
+}
+<h1>@ViewBag.Title.</h1>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<div>
+    @Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(c => c.Name).Titled("Name");
+    columns.Add(c => c.Surname).Titled("Surname");
+    columns.Add(c => c.AvgMark).Titled("Average mark").Filterable(true);
+}
+).WithPaging(10)
+</div>

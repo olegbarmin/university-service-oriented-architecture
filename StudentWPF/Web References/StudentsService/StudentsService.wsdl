@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.friends.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.friends.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.friends.com/">
+      <s:element name="GetAllStudents">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllStudentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllStudentsResult" type="tns:ArrayOfStudent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStudent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Student" nillable="true" type="tns:Student" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Student">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Surname" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AvgMark" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStudentsFilteredByAverageMark">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="lowerBound" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="upperBound" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStudentsFilteredByAverageMarkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStudentsFilteredByAverageMarkResult" type="tns:ArrayOfStudent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllStudentsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllStudents" />
+  </wsdl:message>
+  <wsdl:message name="GetAllStudentsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllStudentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentsFilteredByAverageMarkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStudentsFilteredByAverageMark" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentsFilteredByAverageMarkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStudentsFilteredByAverageMarkResponse" />
+  </wsdl:message>
+  <wsdl:portType name="StudentsServiceSoap">
+    <wsdl:operation name="GetAllStudents">
+      <wsdl:input message="tns:GetAllStudentsSoapIn" />
+      <wsdl:output message="tns:GetAllStudentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentsFilteredByAverageMark">
+      <wsdl:input message="tns:GetStudentsFilteredByAverageMarkSoapIn" />
+      <wsdl:output message="tns:GetStudentsFilteredByAverageMarkSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StudentsServiceSoap" type="tns:StudentsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllStudents">
+      <soap:operation soapAction="http://www.friends.com/GetAllStudents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentsFilteredByAverageMark">
+      <soap:operation soapAction="http://www.friends.com/GetStudentsFilteredByAverageMark" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="StudentsServiceSoap12" type="tns:StudentsServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllStudents">
+      <soap12:operation soapAction="http://www.friends.com/GetAllStudents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentsFilteredByAverageMark">
+      <soap12:operation soapAction="http://www.friends.com/GetStudentsFilteredByAverageMark" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StudentsService">
+    <wsdl:port name="StudentsServiceSoap" binding="tns:StudentsServiceSoap">
+      <soap:address location="http://localhost:63414/StudentsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="StudentsServiceSoap12" binding="tns:StudentsServiceSoap12">
+      <soap12:address location="http://localhost:63414/StudentsService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

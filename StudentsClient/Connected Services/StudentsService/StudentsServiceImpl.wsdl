@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://friends.com/wcf" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="StudentsServiceImpl" targetNamespace="http://friends.com/wcf" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://friends.com/wcf" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/StudentsService.Models" />
+      <xs:element name="GetAllStudents">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllStudentsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/StudentsService.Models" minOccurs="0" name="GetAllStudentsResult" nillable="true" type="q1:ArrayOfStudent" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetStudentsFilteredByAverageMark">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="lowerBound" type="xs:float" />
+            <xs:element minOccurs="0" name="upperBound" type="xs:float" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetStudentsFilteredByAverageMarkResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/StudentsService.Models" minOccurs="0" name="GetStudentsFilteredByAverageMarkResult" nillable="true" type="q2:ArrayOfStudent" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/StudentsService.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/StudentsService.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfStudent">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Student" nillable="true" type="tns:Student" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfStudent" nillable="true" type="tns:ArrayOfStudent" />
+      <xs:complexType name="Student">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AvgMark" type="xs:float" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Student" nillable="true" type="tns:Student" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IStudentsService_GetAllStudents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStudents" />
+  </wsdl:message>
+  <wsdl:message name="IStudentsService_GetAllStudents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllStudentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IStudentsService_GetStudentsFilteredByAverageMark_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentsFilteredByAverageMark" />
+  </wsdl:message>
+  <wsdl:message name="IStudentsService_GetStudentsFilteredByAverageMark_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentsFilteredByAverageMarkResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IStudentsService">
+    <wsdl:operation name="GetAllStudents">
+      <wsdl:input wsaw:Action="http://friends.com/wcf/IStudentsService/GetAllStudents" message="tns:IStudentsService_GetAllStudents_InputMessage" />
+      <wsdl:output wsaw:Action="http://friends.com/wcf/IStudentsService/GetAllStudentsResponse" message="tns:IStudentsService_GetAllStudents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentsFilteredByAverageMark">
+      <wsdl:input wsaw:Action="http://friends.com/wcf/IStudentsService/GetStudentsFilteredByAverageMark" message="tns:IStudentsService_GetStudentsFilteredByAverageMark_InputMessage" />
+      <wsdl:output wsaw:Action="http://friends.com/wcf/IStudentsService/GetStudentsFilteredByAverageMarkResponse" message="tns:IStudentsService_GetStudentsFilteredByAverageMark_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Basic" type="tns:IStudentsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllStudents">
+      <soap:operation soapAction="http://friends.com/wcf/IStudentsService/GetAllStudents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentsFilteredByAverageMark">
+      <soap:operation soapAction="http://friends.com/wcf/IStudentsService/GetStudentsFilteredByAverageMark" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StudentsServiceImpl">
+    <wsdl:port name="Basic" binding="tns:Basic">
+      <soap:address location="http://localhost:49893/StudentsService.svc/basic" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

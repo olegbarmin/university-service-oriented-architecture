@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfStudent>
+	<Student>
+		<Name>Rachel</Name>
+		<Surname>Green</Surname>
+		<AvgMark>3</AvgMark>
+	</Student>
+	<Student>
+		<Name>Monica</Name>
+		<Surname>Geller</Surname>
+		<AvgMark>5</AvgMark>
+	</Student>
+	<Student>
+		<Name>Phoebe</Name>
+		<Surname>Buffay</Surname>
+		<AvgMark>3</AvgMark>
+	</Student>
+	<Student>
+		<Name>Joey</Name>
+		<Surname>Tribbiani</Surname>
+		<AvgMark>1</AvgMark>
+	</Student>
+	<Student>
+		<Name>Chandler</Name>
+		<Surname>Bing</Surname>
+		<AvgMark>4</AvgMark>
+	</Student>
+	<Student>
+		<Name>Ross</Name>
+		<Surname>Geller</Surname>
+		<AvgMark>5</AvgMark>
+	</Student>
+</ArrayOfStudent>

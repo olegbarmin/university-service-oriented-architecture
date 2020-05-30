@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfStudent>
+  <Student>
+    <Name>Will Smith</Name>
+    <AvgMark>4.7</AvgMark>
+  </Student>
+  <Student>
+    <Name>Meryl Streep</Name>
+    <AvgMark>3.7</AvgMark>
+  </Student>
+  <Student>
+    <Name>Annette Bening</Name>
+    <AvgMark>3.8</AvgMark>
+  </Student>
+  <Student>
+    <Name>Natalie Portman</Name>
+    <AvgMark>4.1</AvgMark>
+  </Student>
+  <Student>
+    <Name>Amy Adams</Name>
+    <AvgMark>4.3</AvgMark>
+  </Student>
+  <Student>
+    <Name>Marion Cotillard</Name>
+    <AvgMark>3.1</AvgMark>
+  </Student>
+  <Student>
+    <Name>Emma Thompson</Name>
+    <AvgMark>4.2</AvgMark>
+  </Student>
+</ArrayOfStudent>
